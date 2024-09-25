@@ -178,5 +178,10 @@ updatedBook;
 //////// template literals
 const summary = `${title}, a ${pages}-page long, book was written by ${author}and publised in ${
   publicationDate.split("-")[0]
-}`;
+}. The Book has ${hasMovieAdaptation ? "" : "not"} been adapted as a movie`;
 summary;
+
+/////// Ternary operator
+const pagesRange = pages > 1000 ? "Over a thousand" : "Less than 1000";
+
+pagesRange;
