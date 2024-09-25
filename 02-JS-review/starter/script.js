@@ -264,3 +264,11 @@ const adventureBooks = books
   .map((book) => book.title);
 
 adventureBooks;
+
+//////// REDUCE method
+
+const pagesAllBooks = books.reduce((acc, cur) => {
+  return acc + cur.pages;
+}, 0);
+
+pagesAllBooks;
