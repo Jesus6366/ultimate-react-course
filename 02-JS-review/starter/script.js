@@ -144,7 +144,7 @@ function getBook(id) {
 }
 
 // DESTRUCTURING
-const book = getBook(2);
+const book = getBook(1);
 
 // const title = book.title;
 // const author = book.author;
@@ -157,6 +157,20 @@ const { title, author, pages, publicationDate, genres, hasMovieAdaptation } =
 // const prymaryGenre = genres[0]
 // const secondaryGenre = genres[1]
 
-const [primaryGenre, secondaryGenre] = genres;
+// using arrays
+// rest operator (rest of what we want and has to be the last element (rest))
+const [primaryGenre, secondaryGenre, ...otherGenres] = genres;
 
-console.log(primaryGenre, secondaryGenre);
+// spread operator
+const newGenres = [...genres, "epic fantasy"];
+
+//////////// using objects
+const updatedBook = {
+  ...book,
+  // adding a new property
+  moviePublicationDate: "2001-12-19",
+
+  // overwriting properties
+  pages: 1210,
+};
+updatedBook;
