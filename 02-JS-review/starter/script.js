@@ -143,6 +143,7 @@ function getBook(id) {
   return data.find((d) => d.id === id);
 }
 
+/*
 // DESTRUCTURING
 const book = getBook(1);
 
@@ -220,11 +221,32 @@ const count = book.reviews.librarything.reviewsCount ?? "no data";
 
 ///////////// Optional chaining
 function getTotalReviewCount(book) {
-  const goodreads = book.reviews.goodreads?.reviewsCount ?? 0;
+  const goodreads = book.reviews?.goodreads?.reviewsCount ?? 0;
 
-  const librarything = book.reviews.librarything?.reviewsCount ?? 0;
+  const librarything = book.reviews?.librarything?.reviewsCount ?? 0;
 
   return goodreads + librarything;
 }
 
-console.log(getTotalReviewCount(book));
+*/
+
+//// MAP method
+
+const books = getBooks();
+
+const x = [1, 2, 3, 4, 5].map((element) => element * 2);
+
+x;
+
+const titles = books.map((book) => book.title);
+
+titles;
+
+const essentialData = books.map((book) => {
+  return {
+    title: book.title,
+    author: book.author,
+  };
+});
+
+essentialData;
