@@ -195,3 +195,25 @@ pagesRange;
 const getYear = (str) => str.split("-")[0];
 
 console.log(getYear(publicationDate));
+
+/// Short-Circuiting And Logical Operators: &&, ||, ??
+
+// &&
+console.log(true && "Some string");
+// short circuit
+console.log(false && "Some string");
+console.log(hasMovieAdaptation && "This book has a movie");
+
+// ||
+console.log(true || "Some string");
+console.log(false || "Some string");
+
+console.log(book.translations.spanish);
+
+const spanishTranslation = book.translations.spanish || "Not translated";
+
+spanishTranslation;
+
+// ??
+// short circuit for falsy values
+const count = book.reviews.librarything.reviewsCount ?? "no data";
