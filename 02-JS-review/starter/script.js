@@ -315,7 +315,18 @@ const booksAfterUpdate = booksAfterDelete.map((book) =>
 booksAfterUpdate;
 */
 
-// Asynchronous JavaScript: Promises
-fetch("https://jsonplaceholder.typicode.com/todos")
-  .then((res) => res.json()) // returns another promise
-  .then((data) => console.log(data)); // receives the data
+// // Asynchronous JavaScript: Promises
+// fetch("https://jsonplaceholder.typicode.com/todos")
+//   .then((res) => res.json()) // returns another promise
+//   .then((data) => console.log(data)); // receives the data
+
+//Asynchronous JavaScript: Async/Await
+const getTodos = async () => {
+  const res = await fetch("https://jsonplaceholder.typicode.com/todos");
+
+  const data = await res.json();
+
+  console.log(data);
+};
+
+getTodos();
