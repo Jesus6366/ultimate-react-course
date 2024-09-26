@@ -272,3 +272,15 @@ const pagesAllBooks = books.reduce((acc, cur) => {
 }, 0);
 
 pagesAllBooks;
+
+/////// SORT method mutates the origin array
+
+const xy = [3, 7, 1, 9, 6];
+
+const sorted = xy.slice().sort((a, b) => a - b);
+
+sorted;
+xy;
+
+const sortedByPages = books.slice().sort((a, b) => b.pages - a.pages);
+sortedByPages;
