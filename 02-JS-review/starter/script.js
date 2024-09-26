@@ -230,6 +230,8 @@ function getTotalReviewCount(book) {
 
 */
 
+/*
+
 //// MAP method
 
 const books = getBooks();
@@ -311,3 +313,9 @@ const booksAfterUpdate = booksAfterDelete.map((book) =>
 );
 
 booksAfterUpdate;
+*/
+
+// Asynchronous JavaScript: Promises
+fetch("https://jsonplaceholder.typicode.com/todos")
+  .then((res) => res.json()) // returns another promise
+  .then((data) => console.log(data)); // receives the data
