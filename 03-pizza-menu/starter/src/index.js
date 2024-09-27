@@ -104,6 +104,8 @@ function Menu() {
 }
 
 function Pizza(props) {
+  if (props.pizzaObject.soldOut) return null;
+
   return (
     <li className="pizza">
       <img src={props.pizzaObject.photoName} alt={props.pizzaObject.name} />
@@ -131,6 +133,14 @@ function Footer() {
   //   }
 
   // isOpen && <p>Open</p> short circuit and if the first is true then render the next
+
+  if (!openHour) {
+    return (
+      <p>
+        We're happy to welcome you between {openHour} and {closeHour}
+      </p>
+    );
+  }
 
   return (
     <footer className="footer">
