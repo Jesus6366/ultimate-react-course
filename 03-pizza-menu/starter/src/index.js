@@ -121,9 +121,16 @@ function Footer() {
   //     alert("Sorry we're closed ");
   //   }
 
+  // isOpen && <p>Open</p> short circuit and if the first is true then render the next
+
   return (
     <footer className="footer">
-      {new Date().toLocaleTimeString()}We're currently open!
+      {isOpen && (
+        <div className="order">
+          <p>We're open until {closeHour} Come visit us or order online.</p>
+          <button className="btn">Order</button>
+        </div>
+      )}
     </footer>
   );
 }
