@@ -77,6 +77,7 @@ function Menu() {
   return (
     <main className="menu">
       <h2> Our Menu </h2>
+
       {/* <Pizza
         name={"Pizza spinaci"}
         ingredients={"Tomato, mozarella, spinach, and ricotta cheese"}
@@ -91,11 +92,18 @@ function Menu() {
         photoName={"pizzas/funghi.jpg"}
       /> */}
       {numPizzas > 0 ? (
-        <ul className="pizzas">
-          {pizzaData.map((pizza) => (
-            <Pizza key={pizza.name} pizzaObject={pizza} />
-          ))}
-        </ul>
+        <>
+          <p>
+            Authentic Italian Cuisine. 6 creative dishes to shoose from. All
+            from our stone oven, all organic, all deliciuos.
+          </p>
+
+          <ul className="pizzas">
+            {pizzaData.map((pizza) => (
+              <Pizza key={pizza.name} pizzaObject={pizza} />
+            ))}
+          </ul>
+        </>
       ) : (
         "We're still working on our menu."
       )}
