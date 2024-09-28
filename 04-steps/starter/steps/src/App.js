@@ -9,9 +9,17 @@ const messages = [
 function App() {
   const [step, setStep] = useState(1);
 
-  const handlePrevious = () => {};
+  const handlePrevious = () => {
+    if (step > 1) {
+      setStep((step) => step - 1);
+    }
+  };
 
-  const handleNext = () => {};
+  const handleNext = () => {
+    if (step < 3) {
+      setStep((step) => step + 1);
+    }
+  };
 
   return (
     <div className="steps">
