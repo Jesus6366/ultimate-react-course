@@ -22,9 +22,11 @@ function App() {
     }
   };
 
+  // when updating the state base on previuos state, update it with a callback receiving the current state
+
   return (
     <>
-      <button className="close" onClick={() => setIsOpen(!isOpen)}>
+      <button className="close" onClick={() => setIsOpen((isOpen) => !isOpen)}>
         &times;
       </button>
       {isOpen && (
