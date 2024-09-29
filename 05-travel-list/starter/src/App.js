@@ -13,11 +13,17 @@ function App() {
     setItems((items) => [...items, item]);
   }
 
+  function handleDeleteItem(id) {
+    const filterItems = items.filter((item) => item.id !== id);
+
+    setItems(filterItems);
+  }
+
   return (
     <>
       <Logo />
       <Form handleAddItems={handleAddItems} />
-      <PackingList items={items} />
+      <PackingList items={items} handleDeleteItem={handleDeleteItem} />
       <Stats />
     </>
   );
@@ -71,25 +77,25 @@ function Form({ handleAddItems }) {
   );
 }
 
-function PackingList({ items }) {
+function PackingList({ items, handleDeleteItem }) {
   return (
     <div className="list">
       <ul>
         {items.map((item) => (
-          <Item item={item} key={item.id} />
+          <Item item={item} key={item.id} handleDeleteItem={handleDeleteItem} />
         ))}
       </ul>
     </div>
   );
 }
 
-function Item({ item }) {
+function Item({ item, handleDeleteItem }) {
   return (
     <li>
       <span style={item.packed ? { textDecoration: "line-through" } : {}}>
         {item.quantity} {item.description}
       </span>
-      <button>❌</button>
+      <button onClick={() => handleDeleteItem(item.id)}>❌</button>
     </li>
   );
 }
@@ -97,7 +103,7 @@ function Item({ item }) {
 function Stats() {
   return (
     <footer className="stats">
-      <em>🎒 You have X items on your list, and you alreadi packed X</em>
+      <em>🎒 You have X items on your list, and you already packed X</em>
     </footer>
   );
 }
