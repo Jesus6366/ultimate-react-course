@@ -1,11 +1,5 @@
 import { useState } from "react";
 
-const initialItems = [
-  { id: 1, description: "Passports", quantity: 2, packed: false },
-  { id: 2, description: "Socks", quantity: 12, packed: true },
-  { id: 3, description: "Charger", quantity: 1, packed: false },
-];
-
 function App() {
   const [items, setItems] = useState([]);
 
@@ -19,11 +13,23 @@ function App() {
     setItems(filterItems);
   }
 
+  function handleToggleItem(id) {
+    setItems((items) =>
+      items.map((item) =>
+        item.id === id ? { ...item, packed: !item.packed } : item
+      )
+    );
+  }
+
   return (
     <>
       <Logo />
       <Form handleAddItems={handleAddItems} />
-      <PackingList items={items} handleDeleteItem={handleDeleteItem} />
+      <PackingList
+        items={items}
+        handleDeleteItem={handleDeleteItem}
+        handleToggleItem={handleToggleItem}
+      />
       <Stats />
     </>
   );
@@ -77,21 +83,33 @@ function Form({ handleAddItems }) {
   );
 }
 
-function PackingList({ items, handleDeleteItem }) {
+function PackingList({ items, handleDeleteItem, handleToggleItem }) {
   return (
     <div className="list">
       <ul>
         {items.map((item) => (
-          <Item item={item} key={item.id} handleDeleteItem={handleDeleteItem} />
+          <Item
+            item={item}
+            key={item.id}
+            handleDeleteItem={handleDeleteItem}
+            handleToggleItem={handleToggleItem}
+          />
         ))}
       </ul>
     </div>
   );
 }
 
-function Item({ item, handleDeleteItem }) {
+function Item({ item, handleDeleteItem, handleToggleItem }) {
   return (
     <li>
+      <input
+        type="checkbox"
+        value={item.packed}
+        onChange={() => {
+          handleToggleItem(item.id);
+        }}
+      />
       <span style={item.packed ? { textDecoration: "line-through" } : {}}>
         {item.quantity} {item.description}
       </span>
