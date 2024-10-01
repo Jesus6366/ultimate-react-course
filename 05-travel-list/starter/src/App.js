@@ -13,6 +13,16 @@ function App() {
     setItems(filterItems);
   }
 
+  function handleClearList() {
+    const confirmed = window.confirm(
+      "Are you sure you want to delete all items?"
+    );
+
+    if (confirmed) {
+      setItems([]);
+    }
+  }
+
   function handleToggleItem(id) {
     setItems((items) =>
       items.map((item) =>
@@ -29,6 +39,7 @@ function App() {
         items={items}
         handleDeleteItem={handleDeleteItem}
         handleToggleItem={handleToggleItem}
+        handleClearList={handleClearList}
       />
       <Stats items={items} />
     </>
@@ -83,7 +94,12 @@ function Form({ handleAddItems }) {
   );
 }
 
-function PackingList({ items, handleDeleteItem, handleToggleItem }) {
+function PackingList({
+  items,
+  handleDeleteItem,
+  handleToggleItem,
+  handleClearList,
+}) {
   const [sortBy, setSortBy] = useState("input");
 
   // derived state
@@ -125,6 +141,8 @@ function PackingList({ items, handleDeleteItem, handleToggleItem }) {
           <option value="description">Sort By description</option>
           <option value="packed">Sort By Packed status</option>
         </select>
+
+        <button onClick={handleClearList}>Clear List</button>
       </div>
     </div>
   );
