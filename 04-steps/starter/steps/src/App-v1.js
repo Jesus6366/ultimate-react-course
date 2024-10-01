@@ -26,13 +26,6 @@ function App() {
 
   return (
     <>
-      <Button bgColor={"#7950f2"} textColor={"#fff"} onClick={handlePrevious}>
-        {/* Children props  */}
-        <span> 👈</span>
-        Previuos
-        <div>Hello</div>
-      </Button>
-
       <button className="close" onClick={() => setIsOpen((isOpen) => !isOpen)}>
         &times;
       </button>
@@ -63,17 +56,6 @@ function App() {
         </div>
       )}
     </>
-  );
-}
-
-function Button({ textColor, bgColor, onClick, children }) {
-  return (
-    <button
-      onClick={onClick}
-      style={{ backgroundColor: bgColor, color: textColor }}
-    >
-      {children}
-    </button>
   );
 }
 
