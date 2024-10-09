@@ -35,6 +35,7 @@ function App() {
    */
   function handleAddFriend(friend) {
     setFriends((friends) => [...friends, friend]);
+    setShowAddFriend(false);
   }
 
   return (
@@ -54,9 +55,11 @@ function App() {
 function FriendsList({ friends }) {
   return (
     <ul>
-      {friends.map((friend) => (
-        <Friend friend={friend} key={friend.id} />
-      ))}
+      {friends.map(
+        (/** @type {{ id: React.Key | null | undefined; }} */ friend) => (
+          <Friend friend={friend} key={friend.id} />
+        )
+      )}
     </ul>
   );
 }
@@ -76,7 +79,7 @@ function Friend({ friend }) {
           Your friend {friend.name} owes ${Math.abs(friend.balance)}
         </p>
       )}
-      {friend.balance === 0 && <p>You owe {friend.name} are even</p>}
+      {friend.balance === 0 && <p>You and {friend.name} are even</p>}
 
       <Button onClick={undefined}>Select</Button>
     </li>
