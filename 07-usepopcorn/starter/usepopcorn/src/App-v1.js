@@ -50,17 +50,9 @@ const tempWatchedData = [
 const average = (arr) =>
   arr.reduce((acc, cur, i, arr) => acc + cur / arr.length, 0);
 
-const KEY = "1e8cac3e";
-
 export default function App() {
-  const [movies, setMovies] = useState([]);
-  const [watched, setWatched] = useState([]);
-
-  // // how not to fetch data in react
-  // will fetch non stop infinite loop
-  // fetch(`http://www.omdbapi.com/?apikey=${KEY}&s=interstellar`).then((res) =>
-  //   res.json().then((data) => setMovies(data.Search))
-  // );
+  const [movies, setMovies] = useState(tempMovieData);
+  const [watched, setWatched] = useState(tempWatchedData);
 
   return (
     <>
