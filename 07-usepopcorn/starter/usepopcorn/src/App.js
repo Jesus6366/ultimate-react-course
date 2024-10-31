@@ -55,6 +55,7 @@ const KEY = "1e8cac3e";
 export default function App() {
   const [movies, setMovies] = useState([]);
   const [watched, setWatched] = useState([]);
+  const query = "interstellar";
 
   // // how not to fetch data in react
   // will fetch non stop infinite loop
@@ -62,11 +63,19 @@ export default function App() {
   //   res.json().then((data) => setMovies(data.Search))
   // );
 
-  //fetch data using useEffect
+  //fetch data using useEffect using async await
   useEffect(() => {
-    fetch(`http://www.omdbapi.com/?apikey=${KEY}&s=interstellar`).then((res) =>
-      res.json().then((data) => setMovies(data.Search))
-    );
+    async function fetchMovies() {
+      const res = await fetch(
+        `http://www.omdbapi.com/?apikey=${KEY}&s=${query}`
+      );
+
+      const data = await res.json();
+      setMovies(data.Search);
+      console.log(data.Search);
+    }
+
+    fetchMovies();
   }, []);
 
   return (
