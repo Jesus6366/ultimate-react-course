@@ -53,11 +53,13 @@ const average = (arr) =>
 const KEY = "1e8cac3e";
 
 export default function App() {
+  const [query, setQuery] = useState("");
+
   const [movies, setMovies] = useState([]);
   const [watched, setWatched] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
-  const query = "interstellar";
+  const tempQuery = "interstellar";
 
   // // how not to fetch data in react
   // will fetch non stop infinite loop
@@ -65,11 +67,27 @@ export default function App() {
   //   res.json().then((data) => setMovies(data.Search))
   // );
 
+  // useEffect(() => {
+  //   console.log("After initial render");
+  // }, []);
+
+  // useEffect(() => {
+  //   console.log("After every render");
+  // });
+
+  // useEffect(() => {
+  //   console.log();
+  // }, [query]);
+
+  // console.log("During render");
+
   //fetch data using useEffect using async await
   useEffect(() => {
     async function fetchMovies() {
       try {
         setIsLoading(true);
+        setError("");
+
         const res = await fetch(
           `http://www.omdbapi.com/?apikey=${KEY}&s=${query}`
         );
@@ -93,13 +111,19 @@ export default function App() {
       }
     }
 
+    if (query.length < 3) {
+      setMovies([]);
+      setError("");
+      return;
+    }
+
     fetchMovies();
-  }, []);
+  }, [query]);
 
   return (
     <>
       <NavBar>
-        <Search />
+        <Search query={query} setQuery={setQuery} />
         <Numresults movies={movies} />
       </NavBar>
 
@@ -151,9 +175,7 @@ function Logo() {
   );
 }
 
-function Search() {
-  const [query, setQuery] = useState("");
-
+function Search({ query, setQuery }) {
   return (
     <input
       className="search"
