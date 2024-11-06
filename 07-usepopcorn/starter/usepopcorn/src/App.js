@@ -357,6 +357,11 @@ function MovieDetails({
 
   useEffect(() => {
     document.title = `Movie | ${title}`;
+
+    // cleanup function
+    return function () {
+      document.title = "usePopcorn";
+    };
   }, [title]);
 
   return (
