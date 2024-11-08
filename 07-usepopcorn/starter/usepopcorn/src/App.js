@@ -7,7 +7,7 @@ const average = (arr) =>
 const KEY = "1e8cac3e";
 
 export default function App() {
-  const [query, setQuery] = useState("inception");
+  const [query, setQuery] = useState("");
 
   const [movies, setMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -162,6 +162,13 @@ function Logo() {
 }
 
 function Search({ query, setQuery }) {
+  useEffect(() => {
+    // how not to select dom elements in react
+    const el = document.querySelector(".search");
+    console.log(el);
+    el.focus();
+  }, []);
+
   return (
     <input
       className="search"
