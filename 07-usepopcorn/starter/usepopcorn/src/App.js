@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import StarRating from "./StarRating";
 import { useMovies } from "./useMovies";
 import { useLocalStorageState } from "./useLocalStorageState";
+import { useKey } from "./useKey";
 
 const average = (arr) =>
   arr.reduce((acc, cur, i, arr) => acc + cur / arr.length, 0);
@@ -108,28 +109,12 @@ function Logo() {
 function Search({ query, setQuery }) {
   const inputElement = useRef(null);
 
-  useEffect(() => {
-    function callback(e) {
-      if (document.activeElement === inputElement.current) return;
+  useKey("Enter", function () {
+    if (document.activeElement === inputElement.current) return;
 
-      if (e.code === "Enter") {
-        inputElement.current.focus();
-        setQuery("");
-      }
-    }
-
-    document.addEventListener("keydown", callback);
-
-    // cleanup function
-    return () => document.addEventListener("keydown", callback);
-  }, [setQuery]);
-
-  // useEffect(() => {
-  //   // how not to select dom elements in react
-  //   const el = document.querySelector(".search");
-  //   console.log(el);
-  //   el.focus();
-  // }, []);
+    inputElement.current.focus();
+    setQuery("");
+  });
 
   return (
     <input
@@ -272,18 +257,7 @@ function MovieDetails({
     handleCloseMovie();
   }
 
-  useEffect(() => {
-    const callback = (e) => {
-      if (e.code === "Escape") {
-        handleCloseMovie();
-      }
-    };
-    document.addEventListener("keydown", callback);
-
-    return function () {
-      document.removeEventListener("keydown", callback);
-    };
-  }, [handleCloseMovie]);
+  useKey("Escape", handleCloseMovie);
 
   useEffect(() => {
     async function getMovieDetails() {
