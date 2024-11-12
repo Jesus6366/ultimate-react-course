@@ -17,29 +17,14 @@ function reducer(state, action) {
     default:
       throw new Error("Unknown action");
   }
-
-  // if (action.type === "inc") {
-  //   return state + 1;
-  // }
-
-  // if (action.type === "dec") {
-  //   return state - 1;
-  // }
-
-  // if (action.type === "setCount") {
-  //   return action.payload;
-  // }
 }
 
 function DateCounter() {
-  // const [count, setCount] = useState(0);
   const initialState = { count: 0, step: 1 };
 
   const [state, dispatch] = useReducer(reducer, initialState);
 
   const { count, step } = state;
-
-  // const [step, setStep] = useState(1);
 
   // This mutates the date object.
   const date = new Date("june 21 2027");
