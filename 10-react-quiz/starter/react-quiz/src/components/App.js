@@ -11,7 +11,7 @@ import Progress from "./Progress";
 const initialState = {
   questions: [],
 
-  // loading, error, ready, active, finished
+  // different status: loading, error, ready, active, finished
   status: "loading",
   index: 0,
   answer: null,
