@@ -5,6 +5,7 @@ import Homepage from "./pages/Homepage";
 import PageNotFoung from "./pages/PageNotFoung";
 import AppLayout from "./pages/AppLayout";
 import Login from "./pages/Login";
+import CityList from "./components/CityList";
 
 function App() {
   return (
@@ -16,10 +17,10 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/app" element={<AppLayout />}>
           {/*index route (default nested route) */}
-          <Route index element={<p>List of cities </p>} />
+          <Route index element={<CityList />} />
 
           {/*nested routes */}
-          <Route path="cities" element={<p>List of cities</p>} />
+          <Route path="cities" element={<CityList />} />
           <Route path="countries" element={<p>Countries </p>} />
           <Route path="form" element={<p>Form </p>} />
         </Route>
