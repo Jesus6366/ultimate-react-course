@@ -17,7 +17,6 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    // let isMounted = true; // Track component mount status
     async function fetchCities() {
       try {
         setIsLoading(true);
