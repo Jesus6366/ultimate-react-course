@@ -51,6 +51,8 @@ function App() {
         posts: searchedPosts,
         onAddPost: handleAddPost,
         onClearPosts: handleClearPosts,
+        searchQuery,
+        setSearchQuery,
       }}
     >
       <section>
