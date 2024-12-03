@@ -37,11 +37,7 @@ function CitiesProvider({ children }) {
       setIsLoading(true);
 
       const rest = await fetch(`${BASE_URL}/cities?id=${id}`);
-      console.log(rest);
-
       const data = await rest.json();
-      console.log(data);
-
       setCurrentCity(data[0]);
     } catch (error) {
       alert("There was an error loading data ...");
