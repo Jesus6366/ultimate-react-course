@@ -7,6 +7,7 @@ const CitiesContext = createContext();
 function CitiesProvider({ children }) {
   const [cities, setCities] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [currentCity, setCurrentCity] = useState({});
 
   useEffect(() => {
     async function fetchCities() {
@@ -29,8 +30,21 @@ function CitiesProvider({ children }) {
     // };
   }, []);
 
+  async function getCity(id) {
+    try {
+      setIsLoading(true);
+      const rest = await fetch(`${BASE_URL}/cities/${id}`);
+      const data = await rest.json();
+      setCurrentCity(data);
+    } catch (error) {
+      alert("There was an error loading data ...");
+    } finally {
+      setIsLoading(false);
+    }
+  }
+
   return (
-    <CitiesContext.Provider value={{ cities, isLoading }}>
+    <CitiesContext.Provider value={{ cities, isLoading, currentCity, getCity }}>
       {/*children here is like giving provider to the components 
       <BrowserRouter>
         <Routes>
