@@ -15,6 +15,8 @@ function CitiesProvider({ children }) {
         setIsLoading(true);
         const rest = await fetch(`${BASE_URL}/cities`);
         const data = await rest.json();
+        console.log(data);
+
         setCities(data);
       } catch (error) {
         alert("There was an error loading data ...");
@@ -33,9 +35,14 @@ function CitiesProvider({ children }) {
   async function getCity(id) {
     try {
       setIsLoading(true);
-      const rest = await fetch(`${BASE_URL}/cities/${id}`);
+
+      const rest = await fetch(`${BASE_URL}/cities?id=${id}`);
+      console.log(rest);
+
       const data = await rest.json();
-      setCurrentCity(data);
+      console.log(data);
+
+      setCurrentCity(data[0]);
     } catch (error) {
       alert("There was an error loading data ...");
     } finally {
