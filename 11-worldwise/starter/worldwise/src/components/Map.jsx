@@ -12,20 +12,18 @@ import { useEffect, useState } from "react";
 import { useCities } from "../contexts/CitiesContext";
 import { useGeolocation } from "../hooks/useGeolocation.js";
 import Button from "./Button.jsx";
+import { useUrlPosition } from "../hooks/useUrlPosition.js";
 
 const Map = () => {
   const { cities } = useCities();
   const [mapPosition, setMapPosition] = useState([40, 0]);
-  const [searchParams] = useSearchParams();
   const {
     isLoading: isLoadingPosition,
     position: geolocationPosition,
     getPosition,
   } = useGeolocation();
 
-  // to read the queries
-  const mapLat = searchParams.get("lat");
-  const mapLng = searchParams.get("lng");
+  const [mapLat, mapLng] = useUrlPosition();
 
   useEffect(() => {
     if (mapLat && mapLng) setMapPosition([mapLat, mapLng]);
@@ -82,6 +80,7 @@ const Map = () => {
   );
 };
 
+// eslint-disable-next-line react/prop-types
 function ChangeCenter({ position }) {
   const map = useMap();
 
