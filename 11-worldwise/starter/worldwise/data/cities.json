@@ -10,7 +10,7 @@
         "lat": 38.727881642324164,
         "lng": -9.140900099907554
       },
-      "id": 73930385
+      "id": "73930385"
     },
     {
       "cityName": "Madrid",
@@ -22,7 +22,7 @@
         "lat": 40.46635901755316,
         "lng": -3.7133789062500004
       },
-      "id": 17806751
+      "id": "17806751"
     },
     {
       "cityName": "Berlin",
@@ -34,7 +34,55 @@
         "lat": 52.53586782505711,
         "lng": 13.376933665713324
       },
-      "id": 98443197
+      "id": "98443197"
+    },
+    {
+      "id": "2adc",
+      "cityName": "Ciudad Juarez",
+      "country": "Mexico",
+      "date": "2024-12-11T03:56:06.531Z",
+      "emoji": "🇲🇽",
+      "notes": "i live here",
+      "position": {
+        "lat": "31.74787049725663",
+        "lng": "-106.4381186667589"
+      }
+    },
+    {
+      "id": "7b5d",
+      "cityName": "Boissise-le-Roi",
+      "country": "France",
+      "date": "2024-12-11T03:59:24.331Z",
+      "emoji": "🇫🇷",
+      "notes": "it would be nice",
+      "position": {
+        "lat": "48.520134822764234",
+        "lng": "2.568106899459721"
+      }
+    },
+    {
+      "id": "e64b",
+      "cityName": "Borough of Thurrock",
+      "country": "United Kingdom of Great Britain and Northern Ireland (the)",
+      "date": "2024-12-11T04:02:32.928Z",
+      "emoji": "🇬🇧",
+      "notes": "",
+      "position": {
+        "lat": "51.51553209517046",
+        "lng": "0.3714907416110203"
+      }
+    },
+    {
+      "id": "c85d",
+      "cityName": "Capaccio",
+      "country": "Italy",
+      "date": "2024-12-11T04:04:49.716Z",
+      "emoji": "🇮🇹",
+      "notes": "",
+      "position": {
+        "lat": "40.48052817469566",
+        "lng": "15.01225159444159"
+      }
     }
   ]
 }
