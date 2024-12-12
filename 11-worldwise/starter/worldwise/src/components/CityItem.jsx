@@ -21,7 +21,14 @@ const CityItem = ({ city }) => {
     );
   };
 
-  const { currentCity } = useCities();
+  const { currentCity, deleteCity } = useCities();
+
+  console.log(city.id);
+
+  function handleClick(e) {
+    e.preventDefault();
+    deleteCity(city.id);
+  }
 
   return (
     <li>
@@ -34,7 +41,9 @@ const CityItem = ({ city }) => {
         <span className={styles.emoji}>{flagemojiToPNG(city.emoji)}</span>
         <h3 className={styles.name}>{city.name}</h3>
         <time className={styles.date}>{formatDate(city.date)}</time>
-        <button className={styles.deleteBtn}>&times;</button>
+        <button className={styles.deleteBtn} onClick={handleClick}>
+          &times;
+        </button>
       </Link>
     </li>
   );
