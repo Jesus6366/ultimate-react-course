@@ -183,4 +183,8 @@ const summary = `${title}, is a ${pages}-page long book, was written by ${author
   publicationDate.split("-")[0]
 }`;
 
-summary;
+// Ternary operator
+
+const pageslength = pages > 1000 ? "over a thousand" : "less than 1000";
+
+pageslength;
