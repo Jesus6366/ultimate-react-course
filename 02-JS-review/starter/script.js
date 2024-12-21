@@ -189,5 +189,18 @@ const summary = `${title}, is a ${pages}-page long book, was written by ${author
 )}`;
 
 // Ternary operator
-
 const pageslength = pages > 1000 ? "over a thousand" : "less than 1000";
+
+// Short circuiting &&, ||, ??
+console.log(true && "Some string");
+console.log(false && "Some string");
+console.log(hasMovieAdaptation && "This book has a movie");
+
+/// or operator || if the first element is false it returns the second otherwise it returns the first element
+console.log(true || "Some string");
+console.log(false || "Some string");
+
+//nullish operator ?? for ceros or empty strings
+const count = book.reviews.librarything.reviewsCount ?? "no data";
+
+// Optional chaining operator
