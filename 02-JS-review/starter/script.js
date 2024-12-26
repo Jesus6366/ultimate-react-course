@@ -145,7 +145,7 @@ function getBook(id) {
 
 // Destructuring objects
 
-const book = getBook(1);
+const book = getBook(3);
 
 // const title = book.title;
 // const author = book.author;
@@ -181,7 +181,7 @@ const updatedBook = {
 //Arrow function
 const getYear = (str) => str.split("-")[0];
 
-console.log(getYear(publicationDate));
+// console.log(getYear(publicationDate));
 
 //Template literals
 const summary = `${title}, is a ${pages}-page long book, was written by ${author} and published in ${getYear(
@@ -191,16 +191,25 @@ const summary = `${title}, is a ${pages}-page long book, was written by ${author
 // Ternary operator
 const pageslength = pages > 1000 ? "over a thousand" : "less than 1000";
 
-// Short circuiting &&, ||, ??
-console.log(true && "Some string");
-console.log(false && "Some string");
-console.log(hasMovieAdaptation && "This book has a movie");
+// // Short circuiting &&, ||, ??
+// console.log(true && "Some string");
+// console.log(false && "Some string");
+// console.log(hasMovieAdaptation && "This book has a movie");
 
-/// or operator || if the first element is false it returns the second otherwise it returns the first element
-console.log(true || "Some string");
-console.log(false || "Some string");
+// /// or operator || if the first element is false it returns the second otherwise it returns the first element
+// console.log(true || "Some string");
+// console.log(false || "Some string");
 
 //nullish operator ?? for ceros or empty strings
-const count = book.reviews.librarything.reviewsCount ?? "no data";
+// const count = book.reviews.librarything.reviewsCount ?? "no data";
 
 // Optional chaining operator
+function getTotalReviewCount(book) {
+  const goodread = book.reviews.goodreads.reviewsCount;
+
+  const librarything = book.reviews.librarything?.reviewsCount ?? 0;
+
+  return goodread + librarything;
+}
+
+console.log(getTotalReviewCount(book));
