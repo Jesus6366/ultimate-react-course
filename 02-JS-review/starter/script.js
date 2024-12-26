@@ -144,7 +144,7 @@ function getBook(id) {
 }
 
 // Destructuring objects
-
+/*
 const book = getBook(3);
 
 // const title = book.title;
@@ -213,3 +213,19 @@ function getTotalReviewCount(book) {
 }
 
 console.log(getTotalReviewCount(book));
+ */
+
+//map method
+const books = getBooks();
+
+const titles = books.map((book) => book.title);
+// titles;
+
+const essentialData = books.map((book) => {
+  return {
+    title: book.title,
+    author: book.author,
+  };
+});
+
+// essentialData;
