@@ -236,10 +236,16 @@ const longBooks = books
   .filter((book) => book.pages > 500)
   .filter((book) => book.hasMovieAdaptation);
 
-longBooks;
+// longBooks;
 
 const adventureBooks = books
   .filter((book) => book.genres.includes("adventure"))
   .map((book) => book.title);
 
-adventureBooks;
+// adventureBooks;
+
+// reduce method
+
+const pagesAllBooks = books.reduce((acc, book) => acc + book.pages, 0);
+
+pagesAllBooks;
