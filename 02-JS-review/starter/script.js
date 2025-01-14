@@ -248,7 +248,7 @@ const adventureBooks = books
 
 const pagesAllBooks = books.reduce((acc, book) => acc + book.pages, 0);
 
-pagesAllBooks;
+// pagesAllBooks;
 
 // array sort method
 
@@ -256,10 +256,27 @@ const x = [3, 7, 1, 9, 6];
 
 const sorted = x.sort((a, b) => a - b);
 
-sorted;
+// sorted;
 
 // sorted with a array copy
 
 const sortedByPages = books.slice().sort((a, b) => b.pages - a.pages);
 
-sortedByPages;
+// sortedByPages;
+
+// working with immutable arrays
+// 1 add book object to array
+const newBook = {
+  id: 6,
+  title: "Harry potter and the chamber of secrets",
+  author: "JK Rowling",
+};
+
+const booksAfterAdd = [...books, newBook];
+
+// booksAfterAdd;
+
+//2 delete a book object from array
+const booksAfterDelete = booksAfterAdd.filter((book) => book.id !== 3);
+
+booksAfterDelete;
